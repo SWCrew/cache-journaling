@@ -1,0 +1,22 @@
+{
+  "name": "cache-journaling",
+  "version": "0.0.1",
+  "description": "interactively learning how to build an interactive html display",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SWCrew/cache-journaling.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SWCrew/cache-journaling/issues"
+  },
+  "homepage": "https://github.com/SWCrew/cache-journaling#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
