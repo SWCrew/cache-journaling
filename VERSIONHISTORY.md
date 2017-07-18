@@ -45,3 +45,42 @@ $ npm i
 That will download all the necessary packages that we'll be using for this project. Cool!
 
 So that's all for today. See you guys next time.
+
+# Day 2: Version 0.0.1
+
+So won't update this just yet since we'll just be adding an express server
+
+So now you may notice there are more things added to the develop branch!
+Once you pull down these changes, type in the follow console command at the root of your project:
+
+```
+$ npm i
+```
+
+This should go ahead and install all the nifty new node modules we have. The next thing I recommend is installed nodemon so that you can host the server locally:
+
+```
+$ npm i nodemon -g
+```
+
+The -g is to ensure that you can call nodemon directly from the console. Once you have nodemon, we're ready to run our server. At the root of your project, go ahead and type this command:
+
+```
+$ nodemon index.js
+```
+
+You should get a message like the following:
+
+```
+Listening to server on port: 9000
+```
+
+That means the server is up and running. To test the server, let's go ahead and download [postman](https://www.getpostman.com/). Postman will allow you to directly query your server.
+
+In postman, with your server running, go ahead and type the following URL:
+
+```
+http://localhost:9000/hello
+```
+
+This should get you a JSON file with a message. Cheers and happy coding!
