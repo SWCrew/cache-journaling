@@ -1,1 +1,0 @@
-Chase was laughing.
