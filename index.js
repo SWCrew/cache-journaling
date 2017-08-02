@@ -1,3 +1,6 @@
+// Brune-dawg made this.
+// DONT FORGET TO COMMENT :) - Brent
+
 const http = require('http')
 const app = require('./lib/app')
 
