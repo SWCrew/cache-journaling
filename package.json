@@ -1,11 +1,12 @@
 {
   "name": "cache-journaling",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "interactively learning how to build an interactive html display",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "mocha ./test && eslint ."
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,13 @@
   },
   "homepage": "https://github.com/SWCrew/cache-journaling#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "morgan": "^1.8.2"
+    "morgan": "^1.8.2",
+    "node-fetch": "^1.7.2"
   },
   "devDependencies": {
-    "eslint": "^4.2.0"
+    "eslint": "^4.2.0",
+    "mocha": "^3.5.0"
   }
 }
