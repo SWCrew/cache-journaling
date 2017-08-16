@@ -84,3 +84,80 @@ http://localhost:9000/hello
 ```
 
 This should get you a JSON file with a message. Cheers and happy coding!
+
+# Day 2: Version 0.1.0
+
+Cool, so for this part, we will keep expanding our routes by adding more CRUD operation routes as well as learn a bit on how to test them. To get started, we'll want to install all the new libraries listed in our package.json by calling npm i in the command line:
+
+```
+$ npm i
+```
+Upon further investigation of the package.json, we'll notice that there is a scripts field and one of them now is test key in scripts:
+
+```javascript
+...
+"scripts": {
+  "lint": "eslint .",
+  "start": "node index.js",
+  "test": "mocha ./test && eslint ."
+}
+...
+```
+
+These are basically quick ways to use npm to run these commands in the sequence you desire. So once everything is finished installing we'll run the following command in the CLI: 
+
+```
+$ npm run test
+```
+
+This will then run the command line script 'mocha ./test && eslint .' Basically, it's calling our mocha framework to go ahead and begin running the tests described in our test folder and then will run eslint on the entire directory to ensure we're keeping the code conformed to our eslint rules as set by our .eslintrc file.
+
+You'll notice that when you run test, a bunch of letters/numbers will fly by. Assuming everything goes right, they should all be green (so I made sure all the tests pass).
+
+Let's quickly turn aside to the routes file:
+
+```javascript
+app
+  .get('/hello', function (req, res, next) {
+    res.send({ message: 'hello world' })
+  })
+  .post('/hello', bodyParser, function (req, res, next) {
+    res.send({ message: 'got it', original: req.body })
+  })
+  .put('/hello', bodyParser, function (req, res, next) {
+    res.send({ message: 'got the update', original: req.body })
+  })
+  .delete('/hello/:id', bodyParser, function (req, res, next) {
+    res.send({ message: `ok, will delete right away: ${req.params.id}` })
+  })
+```
+
+ Notice that we have post, put, and delete all chained together after calling get. This basically means that whenever we make an http request with those methods, the route will match the route with the proper method. I recommend looking up server CRUD operations (acronym for Create, Read, Update, Delete) but basically on a server, you want to limit what the user can do on the client side of things so you are setting what methods are initially allowed. Really recommend looking at the [express docs](http://expressjs.com/en/api.html) when you get a chance for understanding how these routes work. The overall idea is that for a site, you want to create things (like new user accounts), get information, update information, or even delete things. Here we designate the routes and then set the methods we want so the user has little control over this process.
+
+Next, let's turn to our test file (app.test.js):
+
+```javascript
+const app = require('../lib/app')
+const fetch = require('node-fetch')
+const assert = require('assert')
+const http = require('http')
+
+describe('app route', function () {
+  let port = 9000
+  let server
+  let url = `http://localhost:${port}`
+
+  before(function () {
+    server = http.createServer(app)
+    server.listen(port)
+  })
+
+  after(function () {
+    server.close.bind(server)
+    server.close()
+  })
+...
+```
+
+So a couple of things to note here, we are bringing in new libraries for which we'll use to test the new route. Because our route is fairly modular, before we begin testing, we can bring it into the test file and create a local server here in the test file which will then listen to port 9000. Then we can create a url that we'll query using the fetch library. Take a look at the tests and come back with questions.
+

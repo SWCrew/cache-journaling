@@ -1,6 +1,6 @@
 {
   "name": "cache-journaling",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "interactively learning how to build an interactive html display",
   "main": "index.js",
   "scripts": {
